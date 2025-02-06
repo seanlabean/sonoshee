@@ -4,7 +4,7 @@ sonoshee is a hodge-podge collection of image manipulation scripts I've written 
 
 ## poodle
 
-A esoterically useful byte-to-png converter specifically designed around the ![.icn file format](https://wiki.xxiivv.com/site/icn_format.html). Currently, `poodle` is even more specialized around `.icn` outputs from ![Noodle](https://wiki.xxiivv.com/site/noodle.html) a 1-bit minimalist drawing app.
+A esoterically useful byte-to-png converter specifically designed around the [.icn file format](https://wiki.xxiivv.com/site/icn_format.html). Currently, `poodle` is even more specialized around `.icn` outputs from [Noodle](https://wiki.xxiivv.com/site/noodle.html) a 1-bit minimalist drawing app.
 
 To Poodle a Noodle: `python poodle.py -i {Noodle .icn file}`
 
