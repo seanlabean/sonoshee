@@ -11,12 +11,16 @@ def main(icn_name):
         with open(icn_name, 'rb') as f:
             images = [ImageOps.invert(Image.frombytes(mode='1', size=[8,8], data=chunk)) for chunk in iter(lambda: f.read(8), b'')]
 
-        # gather and concatenate images into 46 rows of 72
+        # get num rows/cols from hex encoded filename
+        width = int(icn_name[-9:-7], 16)
+        height = int(icn_name[-6:-4], 16)
+
+        # gather and concatenate images into width rows of height
         print("~ Building rows...")
         rows = []
-        for n in range(1,47):
+        for n in range(1,height+1):
             x_shift=0
-            row = images[72*(n-1):72*n]
+            row = images[width*(n-1):width*n]
             row_im = Image.new('1', (len(row)*8, 8))
             for im in row:
                 row_im.paste(im, (x_shift,0))
@@ -46,4 +50,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     icn_name = args.icn_in
     main(icn_name)
+# dimensions of .icn image data are encoded in the file names themselves as hex
 # noodles are 568 x 368; 26128 bytes
