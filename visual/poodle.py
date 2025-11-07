@@ -12,8 +12,8 @@ def main(icn_name):
             images = [ImageOps.invert(Image.frombytes(mode='1', size=[8,8], data=chunk)) for chunk in iter(lambda: f.read(8), b'')]
 
         # get num rows/cols from hex encoded filename
-        width = int(icn_name[-9:-7], 16)
-        height = int(icn_name[-6:-4], 16)
+        width = int(icn_name[-9:-7], 16) #46
+        height = int(icn_name[-6:-4], 16) #72
 
         # gather and concatenate images into width rows of height
         print("~ Building rows...")
