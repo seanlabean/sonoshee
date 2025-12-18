@@ -72,7 +72,7 @@ def main(png_name, filt, thresh):
     elif filt == "alpha":
         pix = [255 if (p[3]) < thresh else 0 for p in pix]
     elif filt == "mean":
-        pix = [255 if (p[0] + p[1] + p[2])/3 > thresh else 0 for p in pix]
+        pix = [255 if (p[0] + p[1] + p[2])/3 < thresh else 0 for p in pix]
     # Iterate and process each block
     for i, block in enumerate(iterate_8x8_blocks(pix, img_height, img_width)):
         print(f"Block {i+1}:")
