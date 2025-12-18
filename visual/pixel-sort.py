@@ -84,7 +84,7 @@ def sort_non_edge_sections(image, edge_mask, min_section_length):
             start_idx = end_idx
     return pixels
 
-im = Image.open('/Users/sean/GitRepos/PythonProjects/GenArt/PixelSort/sonoshee_wp.png', 'r') #'./sonoshee_wp.png'
+im = Image.open('/home/sean/Documents/VindaugaProjects/taiwan-china-digizine/gfx/50-PST00143.JPG', 'r') #'./sonoshee_wp.png'
 im = im.convert('RGBA')
 
 edge_magnitude = detect_edges(im)
@@ -104,5 +104,5 @@ for i in range(0, len(lengths)):
 
     # Step 4: Combine Edge and Non-Edge Regions and Save Image
     sorted_image = Image.fromarray(sorted_pix_val.astype('uint8'), 'RGBA')
-    sorted_image.save(f'/Users/sean/GitRepos/PythonProjects/GenArt/PixelSort/output/{i}.png')
+    sorted_image.save(f'./figures/{i}.png')
     print(f"Saved {i}.png")
