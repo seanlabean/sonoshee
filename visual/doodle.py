@@ -99,4 +99,7 @@ if __name__ == "__main__":
     png_name = args.png_in
     filt = args.filter
     thresh = args.threshold
+    # png_name = "50-iceland-farm.png"
+    # filt= "mean"
+    # thresh = 150
     main(png_name, filt, thresh)

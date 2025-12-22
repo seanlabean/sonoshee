@@ -8,13 +8,21 @@ Visual tools and generative art.
 
 ### poodle
 
-A esoterically useful byte-to-png converter specifically designed around the [.icn file format](https://wiki.xxiivv.com/site/icn_format.html). Currently, `poodle` is even more specialized around `.icn` outputs from [Noodle](https://wiki.xxiivv.com/site/noodle.html) a 1-bit minimalist drawing app.
+A esoterically useful byte-to-png converter specifically designed around the [.icn file format](https://wiki.xxiivv.com/site/icn_format.html). Currently, **poodle** is even more specialized around `.icn` outputs from [Noodle](https://wiki.xxiivv.com/site/noodle.html) a 1-bit minimalist drawing app.
 
 To Poodle a Noodle: `python poodle.py -i {Noodle .icn file}`
 
 I recommend making a bash alias: `alias poodle='python {path_to_poodle.py} -i'` so that you can Poodle Noodles more easily: `poodle {file}` 
 
 ![icn to png map](map.png)
+
+### doodle
+
+The logical counterpart to **poodle**, converts `.png` files to `.icn` format for use in [Noodle](https://wiki.xxiivv.com/site/noodle.html). With **poodle**, a **doodled** `.png` can be conveted back to a `.png` from `.icn`. The result is a monochrome pixel filter. As a filter-applier, **doodle** is extremely slow since the original `.png` must be processed in 8x8 chunks to adhere to the format **Noodle** expects. But it nonetheless can get the job done.
+
+Current issues: How can **doodle** be made to work with `.jpg` files? Why is it, when I use `convert` to scale an image file's dimensions **doodle** breaks?
+
+![png to icn to png](iceland-farm-small43x2e.png)
 
 ### pixel-sort
 
