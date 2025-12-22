@@ -73,10 +73,13 @@ def main(png_name, filt, thresh):
         pix = [255 if (p[3]) < thresh else 0 for p in pix]
     elif filt == "mean":
         pix = [255 if (p[0] + p[1] + p[2])/3 < thresh else 0 for p in pix]
+    elif filt == "lum":
+        pix = [255 if (0.299*p[0] + 0.587*p[1] + 0.114*p[2]) < thresh else 0 for p in pix]
+
     # Iterate and process each block
     for i, block in enumerate(iterate_8x8_blocks(pix, img_height, img_width)):
-        print(f"Block {i+1}:")
-        print(block)
+        #print(f"Block {i+1}:")
+        #print(block)
         for line in block:
             for p in line:
                 if p == 255: #binascii.unhexlify(pad_hex_string(hex(p)[2:])) != b'\x00': #b'\xff':
@@ -93,7 +96,7 @@ def main(png_name, filt, thresh):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', "--png_in", required=True, help=".png filename to be convreted to .icn")
-    parser.add_argument('-f', "--filter", choices=("red", "blue", "green", "alpha", "mean"), default="mean", help="Filter target, what to use to convert pixel to black or white ('red', 'blue', 'green', 'alpha', 'mean').")
+    parser.add_argument('-f', "--filter", choices=("red", "blue", "green", "alpha", "mean", "lum"), default="mean", help="Filter target, what to use to convert pixel to black or white ('red', 'blue', 'green', 'alpha', 'mean').")
     parser.add_argument('-t', "--threshold", type=int, default=150, help="Filter threshold 0 to 255. Values < are black pixels, otherwise white.")
     args = parser.parse_args()
     png_name = args.png_in
